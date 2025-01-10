@@ -33,8 +33,6 @@ def initialize_cart():
         st.session_state.cart = []
     if "logged_in" not in st.session_state:
         st.session_state.logged_in = False
-    if "login_success" not in st.session_state:
-        st.session_state.login_success = False
 
 # Função para adicionar produtos ao carrinho
 def add_to_cart(product):
@@ -96,7 +94,6 @@ def login_screen():
     if st.button("Entrar"):
         if username == "admin" and password == "123":
             st.session_state.logged_in = True
-            st.session_state.login_success = True
         else:
             st.error("Usuário ou senha incorretos.")
 
@@ -111,10 +108,6 @@ def display_cart_icon():
 
 # Main
 initialize_cart()
-
-if st.session_state.login_success:
-    st.session_state.login_success = False
-    st.experimental_rerun()
 
 st.title("E-commerce com Streamlit")
 
